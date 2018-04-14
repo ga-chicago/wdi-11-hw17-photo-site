@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const connectionString = 'mongodb://localhost/photosite';
 
-
 mongoose.connect(connectionString);
 
 mongoose.connection.on("connected", () => {
