@@ -3,8 +3,8 @@ const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const expressLayouts = require('express-ejs-layouts');
-app.set('view engine', 'ejs');
+// const expressLayouts = require('express-ejs-layouts');
+// app.set('view engine', 'ejs');
 
 // call the database
 require('./db/db');
@@ -18,7 +18,7 @@ const usersController = require('./controllers/userController');
 
 // middle ware
 app.use(methodOverride("_method"));
-app.use(expressLayouts);
+// app.use(expressLayouts);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/users', usersController);
 // app.use('/photos', photosController);

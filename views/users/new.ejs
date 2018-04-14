@@ -5,6 +5,20 @@
 </head>
 <body>
 	<header>
+		<h1>Register Your Information!</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/users/">Photographer Index</a></li>
+			</ul>
+		</nav>
 	</header>
+	<main>
+		<form action="/users" method="POST">
+			Username: <input type="text" name="username">
+			Password: <input type="text" name="password">
+			<button type="submit">Submit!</button>
+		</form>
+	</main>
 </body>
 </html>
