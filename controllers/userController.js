@@ -52,7 +52,8 @@ router.put("/:id", (req, res) => {
 	Users.findByIdAndUpdate(
 		req.params.id,
 		{
-			name: req.body.name
+			username: req.body.username,
+			password: req.body.password
 		},
 		(err, Users) => {
 			if (err) console.log(err);
