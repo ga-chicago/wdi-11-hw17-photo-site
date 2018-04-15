@@ -7,8 +7,9 @@
 
 	<h1>View all Photographers</h1>
 
-	<ul><% for (var i = theUsers.length - 1; i >= 0; i--) { %>
+	<ul><% for (let i = 0; i < theUsers.length; i++) { %>
 		<li><a href="/users/<%=theUsers[i].id%>"><%=theUsers[i].username%></a></li>
+		<form action="/users/<%=theUsers[i].id%>?_method=DELETE" method="POST"><input type="Submit" name="delete" value="Delete This User" class="btn"></form> 
 	<%}%></ul>
 
 	<a href="/users/new">Create New User</a>
