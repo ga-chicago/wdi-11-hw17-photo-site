@@ -27,4 +27,15 @@ router.post('/', (req, res) => {
 	res.redirect('/users')		
 })
 
+// ** SHOW ** route
+router.get('/:id', (req, res) => {
+	Users.findById(req.params.id, (err, user) => {
+		if(err) console.log(err);
+		res.render('users/show.ejs', {
+			user: user,
+			id: req.params.id
+		})
+	})	
+})
+
 module.exports = router;
