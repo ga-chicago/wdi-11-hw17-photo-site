@@ -38,6 +38,52 @@ router.get('/:id', (req, res) => {
 });
 
 
+//UPDATE
+//GET route// to 'get' edit page up
+router.get('/:id/edit', (req, res) => {
+
+  Users.findById(req.params.id, (err, foundUser) => {
+    if(err) console.log(err);
+    else console.log(foundUser);
+    res.render('users/edit.ejs', {
+      users: foundUser,
+    });
+  });
+});
+
+
+
+//DELETE
+//delete using the index of data in model
+router.delete('/:id', (req, res) => {
+
+  Users.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+    if(err) console.log(err);
+    else {
+      console.log(deletedUser);
+      res.redirect('/users')
+    }
+  });
+});
+
+
+//EDIT
+//PUT route/ to 'put' update on index page
+router.put('/:id', (req, res) => {
+
+  const userEdit = {};
+    userEdit.username = req.body.username;
+    userEdit.password = req.body.password;
+
+    Users.findByIdAndUpdate(req.params.id, userEdit, {new : true}, (err, updatedUser) => {
+      if(err) console.log(err);
+      console.log(updatedUser);
+      res.redirect('/users');
+    })
+  });
+
+
+
 
 
 
