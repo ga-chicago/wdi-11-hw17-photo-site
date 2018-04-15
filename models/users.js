@@ -6,4 +6,4 @@ const userSchema = new mongoose.Schema({
 });
 
 //Creating the collection --> author will be the name of the collection
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Users', userSchema);
