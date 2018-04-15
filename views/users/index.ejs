@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="row">
+
+          <div class="col-4">
+            <h1>Users</h1>
+          </div>
+
+        </div>
+
+      <div class="row">
+        <div class="col-8">
+          <nav>
+            <ul>
+              <li> <a href="/">Home</a></li>
+              <li> <a href="/users/new">Create User</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+    </header>
+
+    <main>
+      <h2>List of Users</h2>
+
+      <ul>
+        <% for (let i = 0; i < users.length; i++) { %>
+          <li><h3><a href="/users/<%= users[i].id %>"><%= users[i].name %></a></h3></li>
+        <% } %>
+      </ul>
+
+    </main>
+
+
+    </div>
+  </body>
+</html>
