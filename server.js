@@ -41,16 +41,6 @@ app.use('/photos', photosController);
 
 
 
-
-
-
-
-
-
-
-
-
-
 app.listen(PORT, function (){
   console.log("sever is listening on port: " + PORT);
 });
