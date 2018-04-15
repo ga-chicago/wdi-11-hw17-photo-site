@@ -6,7 +6,8 @@ const Users = require('../models/users')
 router.get('/', (req, res) => {
 	Users.find((err, users) => {
 		res.render('users/index.ejs', {
-			theUsers: users
+			theUsers: users,
+			id: req.params.id
 		});	
 	});		
 });
@@ -30,6 +31,7 @@ router.post('/', (req, res) => {
 // ** SHOW ** route
 router.get('/:id', (req, res) => {
 	Users.findById(req.params.id, (err, user) => {
+		console.log("show route, user: " + user);
 		if(err) console.log(err);
 		res.render('users/show.ejs', {
 			user: user,
@@ -38,13 +40,47 @@ router.get('/:id', (req, res) => {
 	})	
 })
 
+
+// ** edit route ** 
+router.get('/:id/edit', (req, res) => {
+	console.log("req.body: " + req.body);
+	Users.findById(req.params.id, (err, user) => {
+		if(err) console.log(err);
+		console.log("User: " + req.body);
+		console.log(req.body.username);
+		console.log(req.body.password);
+		res.render('users/edit.ejs', {
+			user: user,
+			id: req.params.id
+		})
+	})		
+})
+
+router.put('/:id', (req, res) => {
+	const theUser = {
+		username: req.body.username,
+		password: req.body.password
+	}
+	Users.findByIdAndUpdate(req.params.id, theUser, {new: true}, (err, user) => {
+		if(err) console.log(err);
+		console.log("here is the new user: " + user);
+		res.redirect('/users')	
+	})	
+
+})
+
+
 // **DELETE** route
 router.delete('/:id', (req, res) => {
 	Users.findByIdAndRemove(req.params.id, (err, user) => {
 		if(err) console.log(err);
 		else console.log("deleted this user: " + user);	
+		res.redirect('/users')
 	})
-	res.redirect('/users')
+	
 })
+
+
+
 
 module.exports = router;

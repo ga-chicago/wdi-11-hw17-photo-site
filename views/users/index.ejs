@@ -9,7 +9,8 @@
 
 	<ul><% for (let i = 0; i < theUsers.length; i++) { %>
 		<li><a href="/users/<%=theUsers[i].id%>"><%=theUsers[i].username%></a></li>
-		<form action="/users/<%=theUsers[i].id%>?_method=DELETE" method="POST"><input type="Submit" name="delete" value="Delete This User" class="btn"></form> 
+		<form action="/users/<%=id%>?_method=DELETE" method="POST"><input type="Submit" name="delete" value="Delete This User" class="btn"></form> 
+		<a href="/users/<%=theUsers[i].id%>/edit">Edit User Information</a>
 	<%}%></ul>
 
 	<a href="/users/new">Create New User</a>

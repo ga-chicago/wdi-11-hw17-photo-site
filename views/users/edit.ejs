@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<h1>Edit User Information</h1>
+
+		<form action="/users/<%=id%>?_method=PUT"" method="POST">
+			Username: <input type="text" name="username" value="<%=user.username%>" /> <br />
+			Password: <input type="text" name="password"  value="<%=user.password%>"/><br/>
+			<br/>
+			<button type="submit">Update User Information</button>
+		</form>
+</body>
+</html>
