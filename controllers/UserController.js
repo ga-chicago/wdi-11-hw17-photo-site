@@ -4,7 +4,6 @@ const Users = require('../models/users')
 
 // ** INDEX GET ROUTE **
 router.get('/', (req, res) => {
-	console.log('route is being called');
 	Users.find((err, users) => {
 		res.render('users/index.ejs', {
 			theUsers: users
@@ -12,6 +11,9 @@ router.get('/', (req, res) => {
 	});		
 });
 
-
+// ** NEW ** route 
+router.get('/new', (req, res) => {
+	res.render('users/new.ejs')	
+});
 
 module.exports = router;
