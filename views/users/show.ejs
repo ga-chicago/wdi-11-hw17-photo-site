@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <header>
+      <h1><%= users.username %></h1>
+
+      <nav>
+        <ul>
+          <li> <a href="/users">Back to All Users</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <p> PHOTOS GO HERE? </p>
+
+      <a href="/users/<%= users.id %>/edit">Edit User</a>
+      <form action="/users/<%= users.id %>?_method=DELETE" method="POST">
+        <button>Delete User</button>
+
+    </main>
+
+
+  </body>
+</html>
