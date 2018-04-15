@@ -7,8 +7,8 @@ const methodOverride = require('method-override')
 const userController = require('./controllers/UserController');
 
 require('./db/db') // run our db file 
-app.set('view engine', 'ejs');
-app.use(expressLayouts);
+// app.set('view engine', 'ejs');
+// app.use(expressLayouts);
 
 //middleware
 app.use(methodOverride('_method'))
