@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Edit Photo Page</title>
+</head>
+<body>
+	<header class="container">
+		<h1 class="row col">
+			Edit Photo Information
+		</h1>
+		<nav class="row">
+				<a class="col" href="/">Home</a>
+				<a class="col" href="/photos/">Photo Index</a>
+		</nav>
+	</header>
+	<main class="container">
+		<form action="/photos/<%=index%>?_method=PUT" method="POST">
+			Username: <input type="text" name="username" value="<%=photo.username%>">
+			URL: <input type="text" name="url" value="<%=photo.url%>">
+			Caption: <input type="text" name="caption" value="<%=photo.caption%>">
+			<button class="btn btn-success mb-2" type="submit">Submit Your Changes</button>
+		</form>
+	</main>
+</body>
+</html>

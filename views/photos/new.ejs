@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create a Photo</title>
+</head>
+<body>
+	<header>
+		<h1>Enter Photo Information!</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/photos/">Photo Index</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<form action="/photos" method="POST">
+			Username: <input type="text" name="username">
+			URL: <input type="text" name="url">
+			Caption: <input type="text" name="caption">
+			<button type="submit">Submit!</button>
+		</form>
+	</main>
+</body>
+</html>

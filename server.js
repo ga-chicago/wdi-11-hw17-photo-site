@@ -14,14 +14,14 @@ app.use(express.static('public'))
 
 // controllers
 const usersController = require('./controllers/userController');
-// const photosController = require('./controllers/photoController');
+const photosController = require('./controllers/photoController');
 
 // middle ware
 app.use(methodOverride("_method"));
 app.use(expressLayouts);
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/users', usersController);
-// app.use('/photos', photosController);
+app.use('/photos', photosController);
 
 // seeding data -- adding some data when you start development
 app.get('/seed', (req, res) => {
