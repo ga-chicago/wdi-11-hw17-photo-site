@@ -5,9 +5,19 @@
 </head>
 <body>
 
-	<h1><%=user.username%></h1>
+	<h2><%=user.username%>'s Photos</h2>
 
-	<a href="/users/<%=id%>/edit">Edit User Information</a>
+	<div class="container">
+		<!-- photos will go in here -->
+
+		<button class="btn btn-secondary"><a href="/users/<%=id%>/edit">Edit User Information</a></button>
+		
+		<form action="/users/<%=id%>?_method=DELETE" method='POST'>
+			<button class="btn btn-secondary">Delete this Profile</button>
+		</form>
+	</div>
+
+	
 
 </body>
 </html>

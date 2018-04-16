@@ -1,0 +1,63 @@
+body {
+	font-family: 'Oswald', sans-serif;
+	background-color: rgb(100,100,180);
+	
+}
+
+h1 {
+	font-size: 60px;
+	/*color: rgb(230,220,200);*/
+}
+
+h1, h2, h5 {
+	font-family: 'Averia Libre', cursive;
+	text-align: center;
+	color: rgb(230,220,200);
+}
+
+h5 {
+	color: black;
+}
+
+a {
+	color: black;
+}
+
+.btn {
+	text-align: center;
+	letter-spacing: 0.1em;
+}
+
+.nav{
+	letter-spacing: 0.1em;
+	background-color: rgb(230,220,200);
+}
+
+button {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.btn-primary {
+	background-color: rgb(63, 20, 147)
+}
+
+.btn-secondary {
+	background-color: rgb(230,220,200);
+	color: black;
+}
+
+.container {
+	text-align: center;
+}
+
+.col-sm-6 {
+	margin-top: 15px;
+}
+
+.new {
+	margin-top: 40px;
+	background-color: rgb(230,220,200);
+	padding: 20px;
+	font-size: 20px;
+}

@@ -5,15 +5,33 @@
 </head>
 <body>
 
-	<h1>View all Photographers</h1>
+	<h2>All Photographers</h2>
 
-	<ul><% for (let i = 0; i < theUsers.length; i++) { %>
-		<li><a href="/users/<%=theUsers[i].id%>"><%=theUsers[i].username%></a></li>
-		<form action="/users/<%=id%>?_method=DELETE" method="POST"><input type="Submit" name="delete" value="Delete This User" class="btn"></form> 
-		<a href="/users/<%=theUsers[i].id%>/edit">Edit User Information</a>
-	<%}%></ul>
+<br/><br/>
+<div class="container">
+	<div class="row">
+	<%for (let i = 0; i < theUsers.length; i++) {%>
+		
+  			<div class="col-sm-6">
+   				<div class="card">
+   		 			<div class="card-body">
+   		    			<h5 class="card-title"><%=theUsers[i].username%></h5>
+   		    			<a href="/users/<%=theUsers[i].id%>" class="btn btn-primary">View Portfolio</a>
+   		  			</div>
+   				</div>
+  			</div>
+ 
+		
+	<%}%>
+	</div>
 
-	<a href="/users/new">Create New User</a>
+	<br/><br/><br/>
+	<button class="btn btn-secondary"><a href="/users/new">Create New User</a></button>
+
+</div>
+
+
+
 
 </body>
 </html>

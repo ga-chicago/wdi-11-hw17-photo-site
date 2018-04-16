@@ -30,8 +30,8 @@ router.post('/', (req, res) => {
 
 // ** SHOW ** route
 router.get('/:id', (req, res) => {
+	console.log(req.params.id);
 	Users.findById(req.params.id, (err, user) => {
-		console.log("show route, user: " + user);
 		if(err) console.log(err);
 		res.render('users/show.ejs', {
 			user: user,
@@ -72,12 +72,14 @@ router.put('/:id', (req, res) => {
 
 // **DELETE** route
 router.delete('/:id', (req, res) => {
+	console.log(req.params.id);
+	console.log('delete is being clicked');
 	Users.findByIdAndRemove(req.params.id, (err, user) => {
 		if(err) console.log(err);
 		else console.log("deleted this user: " + user);	
-		res.redirect('/users')
+		
 	})
-	
+	res.redirect('/users')
 })
 
 

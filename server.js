@@ -11,10 +11,17 @@ require('./db/db') // run our db file
 // app.use(expressLayouts);
 
 //middleware
-app.use(bodyParser.urlencoded({extended: false}));
+
+
 app.use(methodOverride('_method'))
 
+app.set('view engine', 'ejs');
+app.use(expressLayouts);
+
+app.use(bodyParser.urlencoded({extended: false}));
+
 app.use('/users', userController)
+
 
 
 
