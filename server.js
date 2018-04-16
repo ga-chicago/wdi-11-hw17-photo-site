@@ -5,6 +5,7 @@ const expressLayouts = require('express-ejs-layouts');
 const methodOverride = require('method-override')
 
 const userController = require('./controllers/UserController');
+const photoController = require('./controllers/photoController')
 
 require('./db/db') // run our db file 
 // app.set('view engine', 'ejs');
@@ -21,6 +22,7 @@ app.use(expressLayouts);
 app.use(bodyParser.urlencoded({extended: false}));
 
 app.use('/users', userController)
+app.use('/photos', photoController)
 
 
 

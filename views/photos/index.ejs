@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo Index</title>
+</head>
+<body>
+
+	<h2>All Photos</h2>
+
+	<div class="container">
+		
+		<div class="row">
+			
+			<% for (let i = 0; i < thePhotos.length; i++) {%>
+				<img src="<%=thePhotos[i].source%>"/>
+			<%}%>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
