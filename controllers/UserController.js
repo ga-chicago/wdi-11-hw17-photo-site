@@ -24,8 +24,9 @@ router.post('/', (req, res) => {
 	}, (err, newUser) => {
 		if(err) console.log(err);
 		else console.log(newUser);
+		res.redirect('/users')	
 	});
-	res.redirect('/users')		
+		
 })
 
 // ** SHOW ** route

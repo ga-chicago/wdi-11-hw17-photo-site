@@ -55,7 +55,7 @@ button {
 	margin-top: 15px;
 }
 
-.new {
+.new, .edit {
 	margin-top: 40px;
 	background-color: rgb(230,220,200);
 	padding: 20px;
