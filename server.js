@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 require('./db/db');
 
 //use CSS files
-// app.use(express.static('public'))
+app.use(express.static('public'))
 
 //middleware
 //remember to put method override before using Controller!!!!!

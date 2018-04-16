@@ -2,28 +2,48 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css">
     <title></title>
   </head>
   <body>
+    <div class="container">
+      <header>
+        <div class="row">
+          <div class="twelve columns">
+            <div class="four columns offset-by-four">
 
-    <header>
-      <h1><%= users.username %></h1>
+            <h2>PicShare<img src="/images/polaroid-camera-clipart-photography-pencil-and-in-color-5a98d2b9b8f6b.png" alt="poloroid camera clipart"></h2>
+              <h6>Sharing photos made <em> simple. </em></h6>
+            
 
-      <nav>
-        <ul>
-          <li> <a href="/users">Back to All Users</a></li>
-        </ul>
-      </nav>
-    </header>
+            <div class="four columns offset-by-two">
+            <nav>
+              <ul>
+                <li> <a class="button glow-button" href="/users">Home</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          </div>
+        </div>
+
+
     <main>
-      <p> PHOTOS GO HERE? </p>
+      <div class="row">
+        <div class="twelve columns">
+          <h3><%= users.username %>'s Photos</h3>
+            <p> PHOTOS GO HERE? </p>
 
-      <a href="/users/<%= users.id %>/edit">Edit User</a>
-      <form action="/users/<%= users.id %>?_method=DELETE" method="POST">
-        <button>Delete User</button>
+          <a class="button glow-button" href="/users/<%= users.id %>/edit">Edit User</a>
 
-    </main>
+          <form action="/users/<%= users.id %>?_method=DELETE" method="POST">
+            <button>Delete User</button>
 
+
+          </div>
+        </div>
+      </div>
 
   </body>
 </html>
