@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Photos = require('../models/photos');
+const User = require('../models/users');
 
 //ROUTE TO PHOTO INDEX
 router.get('/', (req, res) => {
@@ -11,50 +12,74 @@ router.get('/', (req, res) => {
 	});
 });
 
-//ROUTE TO NEW PHOTO PAGE
+//ROUTE FOR LIST OF USERS
 router.get('/new', (req, res) => {
-	res.render('photos/new.ejs');
-});
-
-//ROUTE TO ADD NEW PHOTO
-router.post('/', (req, res) => {
-	
-	Photos.create(req.body, (err, addedPhoto) => {
-		if(err) console.log(err);
-		res.redirect('/photos');
+	User.find({}, (err, allUsers) => {
+		res.render('photos/new.ejs', {
+			users: allUsers
+		});
 	});
 });
+
 
 //ROUTE TO SHOW PAGE
 
 router.get('/:id', (req, res) => {
 	
 	Photos.findById(req.params.id, (err, foundPhoto) => {
+		User.findOne({'articles._id': req.paramsid}, (err, foundUser) => {
 		if(err) console.log(err);
 		res.render('photos/show.ejs', {
-			photo: foundPhoto
+			photo: foundPhoto,
+			user: foundUser
+			});
 		});
 	});
 });
 
-//ROUTE TO DELETE Photo
 
-router.delete('/:id', (req, res) => {
 
-	Photos.findByIdAndRemove(req.params.id, (err, deletedPhoto) => {
-		if(err) console.log(err);
-		console.log(deletedPhoto);
-		res.redirect("/photos");
+//ROUTE TO ADD NEW PHOTO
+router.post('/', (req, res) => {
+	User.findById(req.body.userId, (err, foundUser) => {
+		Photos.create(req.body, (err, addedPhoto) => {
+			if(err) console.log(err);
+			foundUser.photos.push(addedPhoto);
+			foundUser.save((err, data) => {
+				res.redirect('/photos');
+			})
+		})
 	});
 });
 
-//ROUTE TO EDIT USER
+//ROUTE TO DELETE PHOTO
+
+router.delete('/:id', (req, res) => {
+	Photos.findByIdAndRemove(req.params.id, () => {
+		User.findOne({'photos._id': req.params.id}, (err, foundUser) => {
+			foundUser.photos.id(req.params.id).remove();
+			foundUser.save((err, data) => {
+				res.redirect('/photos');
+			});
+		});
+	});
+});
+
+//ROUTE TO EDIT IMAGE
 router.get('/:id/edit', (req, res) => {
 
 	Photos.findById(req.params.id, (err, foundPhoto) => {
-		if (err) console.log(err);
-		res.render('photos/edit.ejs', {
-			photo: foundPhoto
+		User.find({}, (err, allUsers) => {
+			if (err) console.log(err);
+			User.findOne({'photos._id': req.params.index}, (err, foundUser) => {
+			res.render('photos/edit.ejs', {
+				photo: foundPhoto,
+				title: foundPhoto.title,
+				webLink: foundPhoto.webLink,
+				users: allUsers,
+				photographer: foundUser
+				});
+			});
 		});
 	});
 });

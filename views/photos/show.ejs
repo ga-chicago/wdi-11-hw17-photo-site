@@ -7,8 +7,10 @@
 <body>
 	
 	<h1> <%= photo.title%></h1>
+	<small>by: <a href="/users/<%=user._id%>"><%=user.userName %>%></a></small><br/>
 	<img src="<%=photo.webLink %>"> <br/>
-	<a href='/photos/<%=photo.id %>/edit'>Edit Photo URL</a>
+	<a href='/photos/<%=photo.id %>/edit'>Edit Image</a>
+<!-- 	<a href="/hotos/"></a> -->
 	<form action='/photos/<%=photo.id %>?_method=DELETE' method='POST'>
   		<button>Delete</button>
   	</form>

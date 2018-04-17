@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../models/users');
+const Articles = require('../models/photos');
 
 
 //ROUTE TO USER INDEX
@@ -8,7 +9,9 @@ router.get('/', (req, res) => {
 
 	Users.find((err, foundUsers) => {
 		if (err) console.log(err);
-		res.render('users/index.ejs', {users: foundUsers}); 	
+		res.render('users/index.ejs', {
+			users: foundUsers
+		}); 	
 	});
 });
 
