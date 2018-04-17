@@ -10,11 +10,13 @@
 	<div class="container">
 		
 		<div class="row">
-			
-			<% for (let i = 0; i < thePhotos.length; i++) {%>
-				<img src="<%=thePhotos[i].source%>"/>
-			<%}%>
 
+			<div class="col-sm-6">
+			
+				<% for (let i = 0; i < thePhotos.length; i++) {%>
+					<a href='/photos/<%=thePhotos[i]._id%>'><img src="<%=	thePhotos[i].url%>" class="photo-show"/></a>
+				<%}%>
+			</div>
 		</div>
 
 	</div>

@@ -61,3 +61,19 @@ button {
 	padding: 20px;
 	font-size: 20px;
 }
+
+textarea{
+	display: block;
+	width: 100%;
+}
+
+.show-page {
+	margin-top: 20px;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	background-color: rgb(230,220,200);
+}
+
+.photo-show {
+	max-width: 100%;
+}
