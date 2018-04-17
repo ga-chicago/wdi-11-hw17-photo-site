@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
 	password: {
 		type: String,
 		required: true
-	}
+	},
+	///how do you require photo.schema??
 });
 
 //creating collection, putting collection into database

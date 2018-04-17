@@ -1,15 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../models/users');
+const Photos = require('../models/photos');
+
 
 //INDEX route
-router.get('/', (req, res) => {
-  Users.find((err, foundUser) => {
-    if(err) console.log(err);
-    console.log(foundUser);
-    res.render('users/index.ejs', {users : foundUser});
-  });
+router.get('/', async (req, res) => {
+  try {
+    const foundUser = await Users.find();
+    res.render('users/index.ejs', {
+      users : foundUser
+    });
+  } catch(err) {
+    res.send(err)
+  }
 });
+
 
 //NEW route
 router.get('/new', (req, res) => {
