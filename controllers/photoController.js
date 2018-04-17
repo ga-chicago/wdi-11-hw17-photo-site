@@ -37,7 +37,7 @@ router.get('/new', async (req, res) => {
 router.get('/:id', async (req, res) => {
 	try {
 		const foundPhoto = await Photos.findById(req.params.id);
-		const foundUser = await User.findOne({'articles._id': req.paramsid})
+		const foundUser = await User.findOne({'photos._id': req.params.id})
 
 		res.render('photos/show.ejs', {
 			photo: foundPhoto,
