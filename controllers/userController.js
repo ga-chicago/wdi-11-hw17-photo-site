@@ -5,15 +5,22 @@ const Articles = require('../models/photos');
 
 
 //ROUTE TO USER INDEX
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
-	Users.find((err, foundUsers) => {
-		if (err) console.log(err);
-		res.render('users/index.ejs', {
+	try {
+
+		const foundUsers = await Users.find();
+		res.render('users/index.ejs',{
 			users: foundUsers
-		}); 	
-	});
+		})
+
+	} catch (err){
+
+		res.send(err);
+		
+	}
 });
+
 
 //ROUTE TO NEW USER PAGE
 router.get('/new', (req, res) => {
@@ -21,56 +28,87 @@ router.get('/new', (req, res) => {
 });
 
 //ROUTE TO ADD NEW USER
-router.post('/', (req, res) => {
-	
-	Users.create(req.body, (err, createdUser) => {
-		if(err) console.log(err);
-		res.redirect('/users');
-	});
+router.post('/', async (req, res) => {
+
+	try {
+
+		const createdUser = await Users.create(req.body);
+		res.redirect('/users')
+
+	} catch (err) {
+
+		res.send(err)
+
+	}
 });
 
 //ROUTE TO SHOW PAGE
 
-router.get('/:id', (req, res) => {
+router.get('/:id', async (req, res) => {
 	
-	Users.findById(req.params.id, (err, foundUser) => {
-		if(err) console.log(err);
+	try {
+
+		const foundUser = await Users.findById(req.params.id);
 		res.render('users/show.ejs', {
 			user: foundUser
 		});
-	});
+
+	} catch (err) {
+
+		res.send(err)
+
+	}
 });
 
 
 //ROUTE TO DELETE USER
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
 
-	Users.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-		if(err) console.log(err);
-		console.log(deletedUser);
-		res.redirect("/users");
-	});
+	try {
+
+		const deletedUser = await Users.findByIdAndRemove(req.params.id);
+		res.redirect('/users');
+
+	} catch (err) {
+
+		res.send(err)
+	}
 });
+
 
 //ROUTE TO EDIT USER
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', async (req, res) => {
 
-	Users.findById(req.params.id, (err, foundUser) => {
-		if (err) console.log(err);
-		res.render('users/edit.ejs', {
+	try {
+
+		const foundUser = await Users.findById(req.params.id);
+		res.render('users/edit.ejs',{
 			user: foundUser
-		});
-	});
+		})
+
+	} catch (err) {
+
+		res.send(err)
+
+	}
 });
+
 
 //PUT ROUTE FOR AFTER EDIT
-router.put('/:id', (req, res) => {
+router.put('/:id', async(req, res) => {
 
-	Users.findByIdAndUpdate(req.params.id, req.body, (err, updatedAuthor) => {
-		if(err) console.log(err);
+	try {
+
+		const updatedAuthor = await Users.findByIdAndUpdate(req.params.id, req.body);
 		res.redirect('/users')
-	});
+
+
+	} catch (err) {
+
+		res.send(err)
+	}
 });
+
 
 module.exports = router;
