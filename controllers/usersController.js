@@ -66,15 +66,13 @@ router.get('/:id/edit', async (req, res) => {
 
 //DELETE
 //delete using the index of data in model
-router.delete('/:id', (req, res) => {
-
-  Users.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-    if(err) console.log(err);
-    else {
-      console.log(deletedUser);
-      res.redirect('/users')
-    }
-  });
+router.delete('/:id', async (req, res) => {
+  try {
+    const deletedUser = await Users.findByIdAndRemove(req.params.id,)
+    res.redirect('/users')
+  } catch(err) {
+    res.send(err)
+  }
 });
 
 
