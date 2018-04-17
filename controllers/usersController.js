@@ -36,14 +36,17 @@ router.post('/', async (req, res) => {
 
 
 //SHOW
-router.get('/:id', (req, res) => {
-  Users.findById(req.params.id, (err, foundUser) => {
-    if(err) console.log(err);
+router.get('/:id', async (req, res) => {
+  try {
+    const foundUser = await Users.findById(req.params.id);
     res.render('Users/show.ejs', {
       users: foundUser
     });
-  });
+  } catch(err) {
+    res.send(err)
+  }
 });
+
 
 
 //UPDATE
