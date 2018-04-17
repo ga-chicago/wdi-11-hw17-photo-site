@@ -12,6 +12,11 @@ require('./db/db');
 // enable css files
 app.use(express.static('public'))
 
+app.get("/", (req, res) => {
+	res.render('home.ejs');
+})
+
+
 // controllers
 const usersController = require('./controllers/userController');
 const photosController = require('./controllers/photoController');
