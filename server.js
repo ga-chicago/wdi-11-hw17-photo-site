@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
 const PORT = 3000;
 const bodyParser = require('body-parser');
@@ -22,6 +23,11 @@ const usersController = require('./controllers/userController');
 const photosController = require('./controllers/photoController');
 
 // middle ware
+app.use(session({
+	secret: 'apples are red', // used to encrypt cookie, make up a phrase
+	resave: false, // do not update unless the session object is changed
+	saveUninitialized: false // it is illegal to store cookies in a user's browser until they log in
+}));
 app.use(methodOverride("_method"));
 app.use(expressLayouts);
 app.use(bodyParser.urlencoded({extended: false}));

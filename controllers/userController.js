@@ -33,6 +33,7 @@ router.post("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
 	try {
 		const foundUser = await Users.findById(req.params.id);
+		// res.send(foundUser.photos);
 		res.render('users/show.ejs', {
 			user: foundUser
 		})		
