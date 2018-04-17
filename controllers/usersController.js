@@ -22,14 +22,16 @@ router.get('/new', (req, res) => {
   res.render('users/new.ejs')
 });
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
 //need to use body-parser
 //also, properties in schema and input form MUST MATCH
-  Users.create(req.body, (err, createdUser) => {
-    if(err) console.log(error);
-    console.log(createdUser);
+
+  try {
+    const createdUser = await Users.create(req.body);
     res.redirect('/users');
-  });
+  } catch(err) {
+    res.send(err)
+  }
 });
 
 
