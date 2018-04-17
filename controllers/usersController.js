@@ -38,28 +38,28 @@ router.post('/', async (req, res) => {
 //SHOW
 router.get('/:id', async (req, res) => {
   try {
-    const foundUser = await Users.findById(req.params.id);
-    res.render('Users/show.ejs', {
-      users: foundUser
-    });
-  } catch(err) {
-    res.send(err)
-  }
+      const foundUser = await Users.findById(req.params.id);
+      res.render('Users/show.ejs', {
+        users: foundUser
+      });
+    } catch(err) {
+      res.send(err)
+    }
 });
 
 
 
 //UPDATE
 //GET route// to 'get' edit page up
-router.get('/:id/edit', (req, res) => {
-
-  Users.findById(req.params.id, (err, foundUser) => {
-    if(err) console.log(err);
-    else console.log(foundUser);
-    res.render('users/edit.ejs', {
-      users: foundUser,
-    });
-  });
+router.get('/:id/edit', async (req, res) => {
+  try {
+      const foundUser = await Users.findById(req.params.id);
+      res.render('users/edit.ejs', {
+        users: foundUser,
+      });
+    } catch(err) {
+      res.send(err)
+    }
 });
 
 
@@ -80,24 +80,17 @@ router.delete('/:id', (req, res) => {
 
 //EDIT
 //PUT route/ to 'put' update on index page
-router.put('/:id', (req, res) => {
-
-  const userEdit = {};
+router.put('/:id', async (req, res) => {
+  try {
+    const userEdit = {};
     userEdit.username = req.body.username;
     userEdit.password = req.body.password;
-
-    Users.findByIdAndUpdate(req.params.id, userEdit, {new : true}, (err, updatedUser) => {
-      if(err) console.log(err);
-      console.log(updatedUser);
-      res.redirect('/users');
-    })
-  });
-
-
-
-
-
-
+    const updatedUser = await Users.findByIdAndUpdate(req.params.id, userEdit, {new : true});
+    res.redirect('/users');
+  } catch(err) {
+      res.send(err)
+  }
+});
 
 
 module.exports = router;
