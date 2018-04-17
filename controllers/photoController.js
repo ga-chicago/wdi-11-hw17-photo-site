@@ -23,10 +23,17 @@ router.post('/', (req, res) => {
 	Users.find({},(err, allUsers) => {
 		for (let i = 0; i < allUsers.length; i++) {
 			if (req.body.username === allUsers[i].username) {
-				Photos.create(req.body, (err, newPhoto) => {
-					if(err) console.log(err);
-					res.redirect('/photos/')
+				Users.findOne({username: req.body.username}, (err, foundUser) => {
+					Photos.create(req.body, (err, newPhoto) => {
+						if(err) console.log(err);
+						foundUser.photos.push(newPhoto);
+						foundUser.save((err, data) => {
+							res.redirect('/photos/')
+						})
+						
+					})
 				})
+				
 			} else {
 				console.log("No matching username found. Please create a new user account") // this will eventually need to be a modal or another view but this is good enough for now
 			}
@@ -43,5 +50,6 @@ router.get('/:id', (req, res) => {
 		})	
 	})		
 })
+
 
 module.exports = router;

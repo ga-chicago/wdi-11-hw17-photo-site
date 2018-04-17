@@ -77,3 +77,11 @@ textarea{
 .photo-show {
 	max-width: 100%;
 }
+
+.btn-row > button {
+	margin: 0;
+}
+
+.btn-row {
+	justify-content: space-around;
+}

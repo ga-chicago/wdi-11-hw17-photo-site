@@ -8,7 +8,8 @@ const userSchema = new mongoose.Schema({
 	password: {
 		type: String
 	
-	}
+	}, 
+	photos: Array
 })
 
 module.exports = mongoose.model('Users', userSchema)
