@@ -66,6 +66,16 @@ router.put("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
 	try {
 		const deletedUser = await Users.findByIdAndRemove(req.params.id);
+		const photoIds = [];
+		for (let i = 0; i < deletedUser.photos.length; i++) {
+			// get the photo ids associated with the user, push to array
+			photoIds.push(deletedUser.photos[i]._id);
+		}
+		const deletedPhotos = await Photos.remove({
+			_id: {
+				$in: photoIds
+			}
+		})
 		res.redirect("/users");
 	} catch (err) {
 		next(err);
