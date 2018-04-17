@@ -46,9 +46,52 @@ router.get('/:id', (req, res) => {
 	Photos.findById(req.params.id, (err, photo) => {
 		if(err) console.log(err);
 		res.render('photos/show.ejs', {
-			photo: photo
+			photo: photo, 
+			id: req.params.id
 		})	
 	})		
+})
+
+// ** delete ** route
+router.delete('/:id', (req, res) => {
+	Photos.findById(req.params.id, (err, photo) => {
+		Users.findOne({username: photo.username}, (err, foundUser) => {
+
+			for (let i = 0; i < foundUser.photos.length; i++) {
+				// console.log(foundUser.photos[i])
+				// console.log(req.params.id);
+				// console.log(foundUser.photos[i]._id + "<-- id for each photo");
+				if (foundUser.photos[i]._id === req.params.id) {
+					res.send('true')
+					// foundUser.photos[i].remove();
+					// foundUser.save((err, data) => {
+					// 	if(err) console.log(err);
+					// 	else {
+					// 		console.log("I work");
+					// 	}
+					// 	res.redirect('/photos')
+					// })
+				}
+			}
+			// foundUser.photos.id(req.params.id).remove();
+			// foundUser.save((err, data) => {
+			// 	if(err) console.log(err);
+			// 	res.redirect('/photos')
+			// })
+		})	
+	})
+
+
+	// Photos.findByIdAndRemove(req.params.id, () => {
+	// 	console.log({'photos._id': req.params.id})
+	// 	Users.findOne({'photos._id': req.params.id}, (err, foundUser) => {
+	// 		res.send(foundUser + " foundUser");
+			// foundUser.photos.id(req.params.id).remove();
+			// foundUser.save(() => {
+			// 	res.redirect('/photos')
+			// })
+	// 	})
+	// })		
 })
 
 

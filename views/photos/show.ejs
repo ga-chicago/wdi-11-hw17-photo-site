@@ -11,6 +11,10 @@
 		<img src="<%=photo.url%>"/>
 
 		<p><%=photo.about%></p>
+
+		<form action="/photos/<%=id%>?_method=DELETE" method='POST'>
+			<button class="btn btn-secondary">Delete this Photo</button>
+		</form>
 	</div>
 	
 
