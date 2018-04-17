@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Photos = require('../models/photos');
+const Users = require('../models/users');
 
 // index route
 router.get("/", (req, res) => {
@@ -54,7 +55,8 @@ router.put("/:id", (req, res) => {
 		{
 			username: req.body.username,
 			url: req.body.url,
-			caption: req.body.caption
+			caption: req.body.caption,
+			dateAdded: req.body.dateAdded
 		},
 		(err, photos) => {
 			if (err) console.log(err);

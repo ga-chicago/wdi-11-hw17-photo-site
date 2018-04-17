@@ -19,6 +19,9 @@
 		<ul>
 			<li>Username: <%= user.username %></li>
 			<li>Password: <%= user.password %></li>
+			<% for (let i = 0; i < user.photos.length; i++) { -%>
+				<img src="<%=user.photos[i].url%>">
+			<% } -%>
 			<a class="btn btn-outline-dark btn-sm" href="/users/<%= user.id %>/edit">Edit User</a>
 			<form action="/users/<%= user.id %>?_method=DELETE" method="POST">
 				<button class="btn btn-outline-danger btn-sm" type="submit">Delete User</button>

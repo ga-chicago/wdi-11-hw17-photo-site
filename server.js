@@ -25,13 +25,7 @@ app.use('/photos', photosController);
 
 // seeding data -- adding some data when you start development
 app.get('/seed', (req, res) => {
-			// Article.create();
-			// Author.create();
-
-
-
 	res.send('I just added some data for you');
-	
 })
 
 
