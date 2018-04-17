@@ -25,13 +25,13 @@ router.get('/new', (req, res) => {
 //ROUTE TO SHOW PAGE
 
 router.get('/:id', (req, res) => {
-	
+	// console.log("---------------------------hittheshowroute--------------------------")
 	Photos.findById(req.params.id, (err, foundPhoto) => {
 		User.findOne({'articles._id': req.paramsid}, (err, foundUser) => {
-		if(err) console.log(err);
-		res.render('photos/show.ejs', {
-			photo: foundPhoto,
-			user: foundUser
+			if(err) console.log(err);
+			res.render('photos/show.ejs', {
+				photo: foundPhoto,
+				user: foundUser
 			});
 		});
 	});
