@@ -8,7 +8,6 @@ router.get('/', (req, res) => {
 
 	Users.find((err, foundUsers) => {
 		if (err) console.log(err);
-		console.log(foundUsers, ' Users');
 		res.render('users/index.ejs', {users: foundUsers}); 	
 	});
 });
@@ -23,7 +22,6 @@ router.post('/', (req, res) => {
 	
 	Users.create(req.body, (err, createdUser) => {
 		if(err) console.log(err);
-		console.log(createdUser);
 		res.redirect('/users');
 	});
 });
@@ -53,11 +51,11 @@ router.delete('/:id', (req, res) => {
 });
 
 //ROUTE TO EDIT USER
-router.get('/:index/edit', (req, res) => {
+router.get('/:id/edit', (req, res) => {
 
-	Users.findById(req.params.index, (err, foundUser) => {
+	Users.findById(req.params.id, (err, foundUser) => {
 		if (err) console.log(err);
-			res.render('users/edit.ejs', {
+		res.render('users/edit.ejs', {
 			user: foundUser
 		});
 	});
@@ -65,9 +63,10 @@ router.get('/:index/edit', (req, res) => {
 
 //PUT ROUTE FOR AFTER EDIT
 router.put('/:id', (req, res) => {
-	Users.findByIdAndUpdate(req.params.id, req.params.userName, (err, authorEdit) => {
+
+	Users.findByIdAndUpdate(req.params.id, req.body, (err, updatedAuthor) => {
 		if(err) console.log(err);
-		else res.redirect('/users')
+		res.redirect('/users')
 	});
 });
 
