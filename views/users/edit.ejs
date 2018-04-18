@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+
+        <div class="row">
+          <div class="twelve columns">
+            <h2>PicShare<img src="/images/polaroid-camera-clipart-photography-pencil-and-in-color-5a98d2b9b8f6b.png" alt="poloroid camera clipart"></h2>
+              <h6>Sharing photos made <em> simple. </em></h6>
+            </div>
+          </div>
+
+
+      <nav>
+        <a class="button glow-button" href="/users">Home</a>
+        <a class="button glow-button" href="/users/<%= users.id %>">Back to Profile</a>
+      </nav>
+    </header>
+
+    <main>
+      <div class="row">
+        <div class="twelve columns">
+            <h4>Update User</h4>
+
+              <form action="/users/<%= users.id %>?_method=PUT" method="POST">
+                  <h5>Edit username: <input type="text" name="username" value="<%= users.username %>"/></h5>
+                  <h5>Edit password: <input type="text" name="password" value="<%= users.password %>"/></h5>
+                  <input class="button-primary" type="submit" value="Submit">
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+  </body>
+</html>

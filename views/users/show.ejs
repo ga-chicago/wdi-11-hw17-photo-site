@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/style.css">
+    <title></title>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="row">
+          <div class="twelve columns">
+            <div class="four columns offset-by-four">
+
+            <h2>PicShare<img src="/images/polaroid-camera-clipart-photography-pencil-and-in-color-5a98d2b9b8f6b.png" alt="poloroid camera clipart"></h2>
+              <h6>Sharing photos made <em> simple. </em></h6>
+
+
+            <div class="four columns offset-by-two">
+            <nav>
+              <ul>
+                <li> <a class="button glow-button" href="/users">Home</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          </div>
+        </div>
+
+
+    <main>
+      <section class="section">
+      <div class="columns">
+        <div class="column is-10 is-offset-1">
+          <h3 class="title is-3"><%= users.username %>'s Photos</h3>
+
+          <div class="fling-minislide">
+            <img src="/path-to-your-image-file-4.jpg" alt="Slide 4" />
+            <img src="/path-to-your-image-file-3.jpg" alt="Slide 3" />
+            <img src="/path-to-your-image-file-2.jpg" alt="Slide 2" />
+            <img src="/path-to-your-image-file-1.jpg" alt="Slide 1" />
+
+          </div>
+
+
+        </div>
+
+      </div>
+    </section>
+
+      <a class="button glow-button" href="/users/<%= users.id %>/edit">Edit User</a>
+        <form action="/users/<%= users.id %>?_method=DELETE" method="POST">
+            <button>Delete User</button>
+
+
+          </div>
+        </div>
+      </div>
+
+  </body>
+</html>
