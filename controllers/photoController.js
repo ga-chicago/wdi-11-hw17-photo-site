@@ -25,17 +25,7 @@ router.get("/new", async (req, res, next) => {
 	} catch (err) {
 		next(err);
 }})
-// router.post('/', async (req, res, next) => {
-// 	try {
-// 		const foundAuthor = await Author.findById(req.body.authorId);
-// 		const createdArticle = await Articles.create(req.body);
-// 		foundAuthor.articles.push(createdArticle);
-// 		const savedAuthor = await foundAuthor.save();
-// 		res.redirect("/articles");
-// 	} catch (err) {
-// 		next(err);
-// 	}
-// });
+
 router.post("/", async (req, res, next) => {
 	try {
 		// make it so photos get added to users photos on their page
@@ -65,22 +55,6 @@ router.get("/:id", async (req, res, next) => {
 })
 
 // edit route
-router.get("/:id/edit", async (req, res, next) => {
-	try {
-		const foundPhoto = await Photos.findById(req.params.id);
-		const allUsers = await Users.find({});
-		const foundUserPhoto = await Users.findOne({'photos._id': req.params.id});
-		res.render("photos/edit.ejs", {
-			photo: foundPhoto,
-			users: allUsers,
-			userPhoto: foundUserPhoto,
-			index: foundPhoto.id
-		});		
-	} catch (err) {
-		next(err);
-	}
-})
-
 router.put("/:id", async (req, res, next) => {
 	try {
 		const updatedPhoto = await Photos.findByIdAndUpdate(req.params.id, req.body);

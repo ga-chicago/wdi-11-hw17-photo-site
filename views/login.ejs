@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Create a User</title>
+	<title>Login</title>
 </head>
 <body>
+	<h1>Log In</h1>
 	<header>
 		<h1>Register Your Information!</h1>
 		<nav>
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li><a href="/users/">Photographer Index</a></li>
+				<li><a href="/users">Photographer Index</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -17,10 +18,8 @@
 		<form action="/users" method="POST">
 			Username: <input type="text" name="username">
 			Password: <input type="password" name="password">
-			<button type="submit">Submit!</button>
+			<button type="submit">Log In!</button>
 		</form>
-		<p>Already have an account? <a href="/users/login">Log In Here</a></p>
-
 	</main>
 </body>
 </html>

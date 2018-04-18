@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Users = require('../models/users');
 const Photos = require('../models/photos');
+const bcrypt = require('bcrypt');
 
 // index route
 router.get("/", async (req, res, next) => {
@@ -19,14 +20,26 @@ router.get("/", async (req, res, next) => {
 router.get("/new", (req, res, next) => {
 	res.render('users/new.ejs')
 })
-
-router.post("/", async (req, res, next) => {
-	try {
-		const createdUser = await Users.create(req.body);
-		res.redirect("/users");
-	} catch (err) {
-		next(err);
+router.get('/login', (req, res) => {
+	const message = req.session.message;
+	req.session.message = null;
+	res.render('login.ejs', {
+		message: message
+	})
+})
+router.post("/", (req, res, next) => {
+	const password = req.body.password;
+	const passwordHash =  bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+	const userDbEntry = {
+		username: req.body.username,
+		password: passwordHash
 	}
+	Users.create(userDbEntry, (err, createdUser) => {
+		req.session.username = req.body.username;
+		req.session.loggedIn = true;
+		req.session.message = "Thanks for signing up, " + req.body.username;
+		res.redirect('/');
+	});
 })
 
 // show route
@@ -83,6 +96,28 @@ router.delete("/:id", async (req, res, next) => {
 	}
 })
 
+router.post('/login', (req, res) => {
+	Users.findOne({username: req.body.username}, (err, userFound) => {
+		if (userFound) {
+			// compare passwords -- this is in lieu of something like if password === password
+			if(bcrypt.compareSync(req.body.password, userFound.password)) {
+				req.session.username = req.body.username;
+				req.session.loggedIn = true;
+				req.session.message = req.body.username + " is logged in.";
 
+				res.redirect('/home');
+			} 
+			// passwords don't match
+			else {
+				req.session.message = "Incorrect username or password.";
+				res.redirect('/users/login');
+			}
+		} else {
+			req.session.message = "Incorrect username or password.";
+			res.redirect('/users/login');
+		}
+	})
+
+})
 
 module.exports = router;
