@@ -38,7 +38,7 @@ router.post("/", (req, res, next) => {
 		req.session.username = req.body.username;
 		req.session.loggedIn = true;
 		req.session.message = "Thanks for signing up, " + req.body.username;
-		res.redirect('/');
+		res.redirect('/photos');
 	});
 })
 

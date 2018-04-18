@@ -6,9 +6,11 @@ const Users = require('../models/users');
 // index route
 router.get("/", async (req, res, next) => {
 	try {
+		const foundUsers = await Users.find();
 		const foundPhotos = await Photos.find();
 		res.render('photos/index.ejs', {
-			photos: foundPhotos
+			photos: foundPhotos,
+			users: foundUsers
 		});		
 	} catch (err) {
 		next(err);
