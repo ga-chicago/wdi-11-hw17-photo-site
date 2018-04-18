@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const Photo = require('./photos')
+
 
 const userSchema = new mongoose.Schema({
 	username: {
@@ -9,7 +11,7 @@ const userSchema = new mongoose.Schema({
 		type: String
 	
 	}, 
-	photos: Array
+	photos: [Photo.schema]
 })
 
 module.exports = mongoose.model('Users', userSchema)
