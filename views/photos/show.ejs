@@ -19,7 +19,7 @@
 
 		<ul>
 			<h2> <%=photo.dateAdded%> </h2>
-			<li>Username: <%= photo.username %></li>
+			<li>Username: <%= username %></li>
 			<a class="btn btn-outline-dark btn-sm" href="/photos/<%= photo.id %>/edit">Edit Photo</a>
 			<form action="/photos/<%= photo.id %>?_method=DELETE" method="POST">
 				<button class="btn btn-outline-danger btn-sm" type="submit">Delete Photo</button>

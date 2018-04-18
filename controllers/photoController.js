@@ -48,9 +48,23 @@ router.get("/:id", async (req, res, next) => {
 		const foundUser = await Users.findOne({'photos._id': req.params.id});
 		res.render('photos/show.ejs', {
 			photo: foundPhoto,
-			user: foundUser,
+			username: foundUser.username,
 			userId: req.body.userId
 		})		
+	} catch (err) {
+		next(err);
+	}
+})
+
+router.get("/:id/edit", async (req, res, next) => {
+	try {
+		const foundPhoto = await Photos.findById(req.params.id);
+		const foundUser = await Users.findOne({'photos._id': req.params.id});
+		res.render('photos/edit.ejs', {
+			photo: foundPhoto,
+			username: foundUser.username,
+			id: foundPhoto.id
+		})
 	} catch (err) {
 		next(err);
 	}

@@ -27,8 +27,9 @@
 		<h3>User Photos:</h3>
 			<% for (let i = 0; i < user.photos.length; i++) { -%>
 				<p> <%=user.photos[i].dateAdded%></p>
-				<img src="<%=user.photos[i].url%>"> <br/>
+				<a href="/photos/<%=user.photos[i]._id%>"><img src="<%=user.photos[i].url%>"></a> <br/>
 				<p><%=user.photos[i].caption%></p>
+				<a href="/photos/<%=user.photos[i]._id%>/edit">Edit Photo</a>
 			<% } -%>
 	</main>
 </body>

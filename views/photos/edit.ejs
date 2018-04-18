@@ -14,8 +14,8 @@
 		</nav>
 	</header>
 	<main class="container">
-		<form action="/photos/<%=index%>?_method=PUT" method="POST">
-			Username: <input type="text" name="username" value="<%=photo.username%>">
+		<form action="/photos/<%=id%>?_method=PUT" method="POST">
+			Username: <input type="text" name="username" value="<%=username%>">
 			Date Added: <input type="text" name="dateAdded" value="<%=photo.dateAdded%>">
 			URL: <input type="text" name="url" value="<%=photo.url%>">
 			Caption: <input type="text" name="caption" value="<%=photo.caption%>">
