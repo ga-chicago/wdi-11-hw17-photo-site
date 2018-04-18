@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1> Edit Photo </h1>
+		<form action='/photos/<%= photo.id %>?_method=PUT' method='POST'>
+			Username: <select name='userId'>
+				<% for(let i = 0; i < users.length; i++){ %>
+					<option value='<%= users[i]._id%>'
+						><%= users[i].userName %>
+					</option>
+				<%}%></select><br/>
+			Image Title: <input type='text' name='title' value='<%= photo.title %>'/><br/>
+			Image Address: <input type='text' name='webLink' value='<%= photo.webLink %>'/><br/>
+		 	<button type='submit'>Save Photo</button>
+		 </form>
+
+</body>
+</html>

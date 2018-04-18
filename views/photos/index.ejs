@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset='utf-8'>
+	<title>PHOTOS - INDEX</title>
+</head>
+<body>
+	<header>
+		<h1> PHOTOS - HOME </h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/photos/new">Add Photo</a></li>
+				<h2> Photos </h2>
+				<% for(var i = 0; i <photos.length; i++) {%>
+					<li> 
+						<a href="/photos/<%=photos[i].id%>"><%=photos[i].title%></a>
+					</li>
+					<% } %>
+			</ul>
+		</nav>
+	</header>
+
+</body>
+</html>

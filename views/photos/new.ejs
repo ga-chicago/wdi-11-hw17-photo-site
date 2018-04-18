@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> New Photo</title>
+</head>
+<body>
+	<header>
+		<h1> Add a Photo</h1>
+	</header>
+	<main>
+		<form action='/photos' method='post'>
+			<h2> Image User </h2>
+				<select name='userId'>
+					<% for (let i = 0; i < users.length; i++) { -%>
+						<option value='<%= users[i].id%>'><%= users[i].userName%></option>
+				<% } -%>
+			</select><br/>
+			<h2> Image Title </h2>
+			<input type='text' name='title'></input>
+			<h2> Image Address </h2>
+			<input type='text' name='webLink'></input>
+			<button type='submit'>Add Photo</button>
+		</form>
+	</main>
+
+</body>
+</html>
