@@ -17,8 +17,8 @@
 	<main>
 		<ul>
 			<%for (let i = 0; i < photos.length; i++) {%>
-				<p><%=users.username%></p>
 				<a href="/users"><img src="<%=photos[i].url%>"></a>
+				<p><%=photos[i].caption%></p>
 			<%}%>
 		</ul>
 	</main>

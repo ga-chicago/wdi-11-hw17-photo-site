@@ -13,7 +13,7 @@ const photoSchema = new mongoose.Schema({
 	caption: String,
 	dateAdded: {
 		type: Date,
-		default: Date.now
+		default: Date.now()
 	}
 });
 

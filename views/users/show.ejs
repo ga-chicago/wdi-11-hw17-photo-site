@@ -26,7 +26,9 @@
 		</form>
 		<h3>User Photos:</h3>
 			<% for (let i = 0; i < user.photos.length; i++) { -%>
-				<img src="<%=user.photos[i].url%>">
+				<p> <%=user.photos[i].dateAdded%></p>
+				<img src="<%=user.photos[i].url%>"> <br/>
+				<p><%=user.photos[i].caption%></p>
 			<% } -%>
 	</main>
 </body>
