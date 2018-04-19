@@ -4,18 +4,41 @@ const User = require('../models/users');
 const bcrypt = require('bcrypt');
 
 router.get('/', (req, res) => {
-	res.render('auth/login.ejs', {})
+	const message = req.session.message;
+	req.session.message = null;
+	res.render('auth/login.ejs', {
+		message: message
+	})
 })
 
 
-router.post('/login', (req, res) => {
+router.post('/login', async (req, res, next) => {
 
-
-
-	req.session.loggedIn = true;
-	req.session.username = req.body.username;
-	req.session.password = req.body.password;
-	res.redirect('/photos');
+	try {
+		// find the user
+		const user = await User.findOne({username: req.body.username});
+		// if the user is not in the database, it will return null
+		if (user) {
+			// if user is found
+			// now we need to compare the passwords 
+			// bcrypt.compareSync returns true or false
+			if(bcrypt.compareSync(req.body.password, user.password)) {
+				req.session.loggedIn = true;
+				req.session.username = user.username;
+				res.redirect('/articles');
+			} else {
+				// if user password doesn't match input
+				req.session.message = "Username or password is incorrect. Please try again.";
+				res.redirect('/');
+			}
+		} else {
+			// if user isn't found
+			req.session.message = "Username or password is incorrect. Please try again.";
+			res.redirect('/');
+		}
+	} catch (err) {
+		next(err)
+	}
 })
 
 router.post('/register', (req, res) => {
@@ -38,7 +61,6 @@ router.post('/register', (req, res) => {
 			req.sesson.message = "Sorry, it didn't work";
 			res.redirect('/');
 		}
-
 })
 
 
