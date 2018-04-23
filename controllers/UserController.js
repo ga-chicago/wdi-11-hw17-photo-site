@@ -2,6 +2,41 @@ const express = require('express');
 const router = express.Router();
 const Users = require('../models/users')
 
+const bcrypt = require('bcrypt')
+
+// ** show ** route for registration page
+router.get('/new', (req, res) => {
+	const message = req.session.message;
+	req.session.message = null;
+	res.render('users/new.ejs', {
+		message: message
+	});	
+})
+
+// router.post('/', (req, res) => {
+// 	const password = req.body.password
+
+// 	const passwordHash = bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+
+// 	const userDbEntry = {
+// 		username: req.body.username,
+// 		password: passwordHash
+// 	}
+
+// 	console.log(userDbEntry, "<-- created user");
+
+// 	Users.create(userDbEntry, (err, createdUser) => {
+		
+// 		req.session.username = req.body.username,
+// 		req.session.loggedIn = true,
+// 		req.session.message = "Thanks for signing up."
+// 		console.log(req.session, "<-- this is req.session")
+
+// 		res.redirect('/photos')
+// 	})		
+// })
+
+
 // ** INDEX GET ROUTE **
 router.get('/', (req, res) => {
 	Users.find((err, users) => {

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+</head>
+<body>
+
+	<div class="sign-in">
+
+		<div class="row">
+			<% if (message) {%>
+				<p style="background-color: red" class="message"><%=message%></p>
+			<%}%>
+
+			<form action="/login" method="POST" id="login">
+				<div class="form-group">
+					<h3>Welcome to Hannah's Photo Corner. <br/> Please login to continue.</h3>
+					<input type="text" name="username" placeholder="Username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+					<input type="password" name="password" placeholder="Password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+					<button type="Submit">Submit</button>
+
+					<p>Don't have an account? <a href="/registration">Click here to sign up.</a></p>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+</body>
+</html>

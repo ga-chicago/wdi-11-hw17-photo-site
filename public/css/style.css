@@ -74,6 +74,10 @@ textarea{
 	background-color: rgb(230,220,200);
 }
 
+.show-page > img {
+	width: 100%;
+}
+
 .photo-show {
 	max-width: 100%;
 }
@@ -83,5 +87,35 @@ textarea{
 }
 
 .btn-row {
+	justify-content: space-around;
+}
+
+.sign-in {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	text-align: center;
+	background-color: rgb(230,220,200);
+	padding-bottom: 15px;
+}
+
+.sign-in > form {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sign-in > form > button {
+	margin-top: 10px;
+}
+
+.form-group {
+	width: 60%%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+.row {
 	justify-content: space-around;
 }
