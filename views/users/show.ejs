@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Show Page</title>
+</head>
+<body>
+	<header>
+		<h1> <%=user.username%> Info </h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/users/">Photographer Index</a></li>
+				<li><a href="/photos/new">Add a Photo</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+
+		<h2>User Attributes</h2>
+		<ul>
+			<li>Username: <%= user.username %></li>
+		</ul>
+		<a class="btn btn-outline-dark btn-sm" href="/users/<%= user.id %>/edit">Edit User</a>
+		<form action="/users/<%= user.id %>?_method=DELETE" method="POST">
+			<button class="btn btn-outline-danger btn-sm" type="submit">Delete User</button>
+		</form>
+		<h3>User Photos:</h3>
+			<% for (let i = 0; i < user.photos.length; i++) { -%>
+				<p> <%=user.photos[i].dateAdded%></p>
+				<a href="/photos/<%=user.photos[i]._id%>"><img src="<%=user.photos[i].url%>"></a> <br/>
+				<p><%=user.photos[i].caption%></p>
+				<a href="/photos/<%=user.photos[i]._id%>/edit">Edit Photo</a>
+			<% } -%>
+	</main>
+</body>
+</html>

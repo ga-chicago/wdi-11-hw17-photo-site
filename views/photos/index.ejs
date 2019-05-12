@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Photo Index</title>
+</head>
+<body>
+	<header>
+		<h1>Browse photos!</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/photos/new">Add A Photo!</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<ul>
+			<%for (let i = 0; i < photos.length; i++) {%>
+				<a href="/users"><img src="<%=photos[i].url%>"></a>
+				<p><%=photos[i].caption%></p>
+			<%}%>
+		</ul>
+	</main>
+</body>
+</html>

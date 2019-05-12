@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo Show Page</title>
+</head>
+<body>
+	<header>
+		<h1>View Your Photos!</h1>
+		<nav>
+			<ul>
+				<li><a href="/">Home</a></li>
+				<li><a href="/photos/">Photo Index</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+
+		<h2>Photo Attributes</h2>
+
+		<ul>
+			<h2> <%=photo.dateAdded%> </h2>
+			<li>Username: <%= username %></li>
+			<a class="btn btn-outline-dark btn-sm" href="/photos/<%= photo.id %>/edit">Edit Photo</a>
+			<form action="/photos/<%= photo.id %>?_method=DELETE" method="POST">
+				<button class="btn btn-outline-danger btn-sm" type="submit">Delete Photo</button>
+			</form>
+			<img src="<%= photo.url %>">
+			<%if (photo.caption) {%>
+				<h2><%=photo.caption%><h2>
+			<%}%>
+		</ul>
+
+	</main>
+</body>
+</html>
