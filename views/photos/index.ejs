@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Photo Index</title>
+</head>
+<body>
+
+	<h2>All Photos</h2>
+
+	<div class="container">
+		
+		<div class="row">
+
+			<div class="col-sm-6">
+			
+				<% for (let i = 0; i < thePhotos.length; i++) {%>
+					<a href='/photos/<%=thePhotos[i]._id%>'><img src="<%=	thePhotos[i].url%>" class="photo-show"/></a>
+				<%}%>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

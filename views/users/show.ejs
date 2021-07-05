@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Show Page</title>
+</head>
+<body>
+
+	<h2><%=user.username%>'s Photos</h2>
+
+	<div class="container">
+
+		<% for (let i = 0; i < user.photos.length; i++) {%>
+			<img src="<%=user.photos[i].url%>">
+		<%}%>
+		<!-- photos will go in here -->
+		<div class="row btn-row">
+			<button class="btn btn-secondary"><a href="/users/<%=id%>/edit">Edit User Information</a></button>
+		
+			<form action="/users/<%=id%>?_method=DELETE" method='POST'>
+				<button class="btn btn-secondary">Delete this Profile</button>
+			</form>
+		</div>
+		
+	</div>
+
+	
+
+</body>
+</html>

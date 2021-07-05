@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create New User</title>
+</head>
+<body>
+
+	<h1>Create a New User</h1>
+
+<div class="container new">
+
+  <% if (message) {%>
+    <p style="background-color: pink"><%=message%></p>
+  <%}%>
+
+  <h3>Welcome to Hannah's Photo Corner. Please create an account to continue.</h3>
+
+  
+
+	<form action='/registration' method="POST">
+  		<div class="form-group">
+    		<label for="exampleInputEmail1">Username: </label>
+    		<input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+   
+  		</div>
+  		<div class="form-group">
+    		<label for="exampleInputPassword1">Password</label>
+    		<input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+ 		</div>
+
+
+  		<button type="submit" class="btn btn-primary">Create New User</button>
+
+      <p><small>Already have an account? <a href="/"> Log in here.</a></small></p>
+	</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+body {
+	font-family: 'Oswald', sans-serif;
+	background-color: rgb(100,100,180);
+	
+}
+
+h1 {
+	font-size: 60px;
+	/*color: rgb(230,220,200);*/
+}
+
+h1, h2, h5 {
+	font-family: 'Averia Libre', cursive;
+	text-align: center;
+	color: rgb(230,220,200);
+}
+
+h5 {
+	color: black;
+}
+
+a {
+	color: black;
+}
+
+.btn {
+	text-align: center;
+	letter-spacing: 0.1em;
+}
+
+.nav{
+	letter-spacing: 0.1em;
+	background-color: rgb(230,220,200);
+}
+
+button {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.btn-primary {
+	background-color: rgb(63, 20, 147)
+}
+
+.btn-secondary {
+	background-color: rgb(230,220,200);
+	color: black;
+}
+
+.container {
+	text-align: center;
+}
+
+.col-sm-6 {
+	margin-top: 15px;
+}
+
+.new, .edit {
+	margin-top: 40px;
+	background-color: rgb(230,220,200);
+	padding: 20px;
+	font-size: 20px;
+}
+
+textarea{
+	display: block;
+	width: 100%;
+}
+
+.show-page {
+	margin-top: 20px;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	background-color: rgb(230,220,200);
+}
+
+.show-page > img {
+	width: 100%;
+}
+
+.photo-show {
+	max-width: 100%;
+}
+
+.btn-row > button {
+	margin: 0;
+}
+
+.btn-row {
+	justify-content: space-around;
+}
+
+.sign-in {
+	width: 60%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	text-align: center;
+	background-color: rgb(230,220,200);
+	padding-bottom: 15px;
+}
+
+.sign-in > form {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sign-in > form > button {
+	margin-top: 10px;
+}
+
+.form-group {
+	width: 60%%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+}
+
+.row {
+	justify-content: space-around;
+}
